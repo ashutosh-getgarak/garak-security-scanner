@@ -1,0 +1,66 @@
+name: 'Garak Security Scanner'
+description: 'Run Garak AI security scans in your CI/CD pipeline to detect vulnerabilities, toxicity, and prompt injection attacks'
+author: 'Garak Security'
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  api_key:
+    description: 'Garak API key for authentication'
+    required: true
+  endpoint:
+    description: 'Target API endpoint to scan (e.g., https://api.anthropic.com/v1/messages)'
+    required: true
+  model_id:
+    description: 'Model identifier to test (optional, depends on endpoint)'
+    required: false
+    default: ''
+  probes:
+    description: 'Comma-separated list of probe categories (e.g., dan,security,privacy,toxicity,hallucination,performance,robustness,ethics,stereotypes)'
+    required: false
+    default: 'dan,security,privacy,toxicity'
+  generator_mode:
+    description: 'Generator mode for the scan (e.g., rest)'
+    required: false
+    default: 'rest'
+  parallel_attempts:
+    description: 'Number of parallel scan attempts'
+    required: false
+    default: '4'
+  response_json_path:
+    description: 'JSON path to extract response text (e.g., $.content[0].text)'
+    required: false
+    default: '$.content[0].text'
+  target_api_key:
+    description: 'API key for the target endpoint being scanned'
+    required: false
+    default: ''
+  timeout_minutes:
+    description: 'Maximum timeout for scan completion in minutes'
+    required: false
+    default: '60'
+  score_threshold:
+    description: 'Minimum security score to pass (0-100)'
+    required: false
+    default: '80'
+  poll_interval:
+    description: 'Seconds between status checks'
+    required: false
+    default: '10'
+
+outputs:
+  scan_id:
+    description: 'Unique identifier for the scan execution'
+  security_score:
+    description: 'Overall security score (0-100)'
+  vulnerabilities_found:
+    description: 'Number of vulnerabilities detected'
+  report_url:
+    description: 'URL to the detailed scan report'
+  status:
+    description: 'Final scan status (passed/failed)'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
