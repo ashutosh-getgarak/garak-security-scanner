@@ -20,17 +20,25 @@ Automatically detect:
 
 ## Quick Start
 
-### 1. Set up secrets
+### Option 1: Use GitHub's Workflow Template (Easiest)
 
-Add these secrets to your GitHub repository:
-- `GARAK_API_KEY` - Your Garak API key ([get one here](https://app.garak.ai/api-keys))
-- `TARGET_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
+1. **Set up secrets** in your repository:
+   - Go to **Settings → Secrets and variables → Actions → New repository secret**
+   - Add `GARAK_API_KEY` - Your Garak API key ([get one here](https://app.garak.ai/api-keys))
+   - Add `X_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
 
-**Settings → Secrets and variables → Actions → New repository secret**
+2. **Add the workflow**:
+   - Go to your repository's **Actions** tab
+   - Click **New workflow**
+   - Search for **"Garak"** or find it in the Security category
+   - Click **Configure** on the "Garak AI Security Scanner" template
+   - Commit the workflow file
 
-### 2. Create workflow
+That's it! The scan will run automatically on your next push.
 
-Create `.github/workflows/security-scan.yml`:
+### Option 2: Manual Setup
+
+If the template isn't available yet (pending GitHub approval), create `.github/workflows/security-scan.yml` manually:
 
 ```yaml
 name: AI Security Scan
@@ -69,13 +77,24 @@ jobs:
           retention-days: 30
 ```
 
-### 3. Run and monitor
+### What happens next?
 
-The action will:
-1. ✅ Execute comprehensive security scans
+The action will automatically:
+1. ✅ Execute comprehensive security scans on every push/PR
 2. 📊 Generate detailed vulnerability reports
 3. ⚡ Fail the build if security score < threshold
 4. 📦 Upload results as artifacts
+5. 💬 Comment on PRs with scan results
+
+## Getting the Workflow Template in GitHub
+
+To make this workflow appear in the "Actions → New workflow" suggestions for all users:
+
+1. See [STARTER_WORKFLOWS_SUBMISSION.md](STARTER_WORKFLOWS_SUBMISSION.md) for detailed instructions
+2. Submit a PR to https://github.com/github/starter-workflows (we've prepared all files!)
+3. Once approved, it appears automatically for all GitHub users
+
+**For your organization only:** Create a `.github` repository in your org and add the workflow templates there for immediate availability.
 
 ## Inputs
 

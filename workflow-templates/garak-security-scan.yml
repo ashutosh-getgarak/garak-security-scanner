@@ -1,4 +1,10 @@
-name: AI Security Scan
+# This workflow uses Garak Security Scanner to detect AI vulnerabilities
+# Documentation: https://github.com/garaksecurity/garak-security-scanner
+# Configure the required secrets in your repository settings:
+# - GARAK_API_KEY: Your Garak API key (get one at https://app.garak.ai)
+# - X_API_KEY: API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
+
+name: Garak AI Security Scan
 
 on:
   push:

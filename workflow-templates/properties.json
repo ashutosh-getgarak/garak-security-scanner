@@ -1,0 +1,15 @@
+{
+  "name": "Garak AI Security Scanner",
+  "description": "Run comprehensive AI security scans to detect prompt injections, jailbreaks, and vulnerabilities in LLM applications.",
+  "iconName": "garak-security",
+  "categories": [
+    "Security",
+    "Python",
+    "Automation"
+  ],
+  "filePatterns": [
+    "**/*.py$",
+    "requirements.txt$",
+    "pyproject.toml$"
+  ]
+}
