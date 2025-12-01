@@ -231,13 +231,6 @@ response_json_path: $.choices[0].message.content
 - ✅ Review scan reports for all vulnerabilities
 - ✅ Set appropriate score thresholds for your use case
 
-## Contributing
-
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
 ## Support
 
 For support, visit [www.getgarak.com](https://www.getgarak.com/) or open an issue in this repository.
@@ -245,19 +238,6 @@ For support, visit [www.getgarak.com](https://www.getgarak.com/) or open an issu
 ## License
 
 Proprietary - © Garak Inc. All rights reserved.
-
-## Future Enhancements
-
-- [ ] Scheduled background scans with cron triggers
-- [ ] Slack/Teams notification integrations
-- [ ] Custom report formatting and branding
-- [ ] Baseline comparison and regression detection
-- [ ] Multi-model comparative analysis
-- [ ] SARIF format output for GitHub Code Scanning
-- [ ] Automatic issue creation for critical vulnerabilities
-- [ ] Integration with GitHub Security tab
-- [ ] Support for custom probe development
-- [ ] Historical trend analysis and dashboards
 
 ---
 
