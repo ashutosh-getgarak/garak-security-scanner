@@ -1,6 +1,6 @@
 name: 'Garak Security Scanner'
-description: 'Run Garak AI security scans in your CI/CD pipeline to detect vulnerabilities, toxicity, and prompt injection attacks'
-author: 'Garak Security'
+description: 'Run Garak security scans in your CI/CD pipeline to detect vulnerabilities, toxicity, and prompt injection attacks'
+author: 'Garak Inc.'
 branding:
   icon: 'shield'
   color: 'blue'

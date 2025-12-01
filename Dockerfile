@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
-LABEL maintainer="Garak Security <support@garak.ai>"
-LABEL description="Garak AI Security Scanner for CI/CD pipelines"
+LABEL maintainer="Garak Inc."
+LABEL description="Garak Security Scanner for CI/CD pipelines"
 
 WORKDIR /app
 

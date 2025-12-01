@@ -1,10 +1,9 @@
 # Garak Security Scanner
 
-![GitHub release](https://img.shields.io/github/v/release/garaksecurity/garak-security-scanner)
-![License](https://img.shields.io/github/license/garaksecurity/garak-security-scanner)
-[![CI](https://github.com/garaksecurity/garak-security-scanner/workflows/CI/badge.svg)](https://github.com/garaksecurity/garak-security-scanner/actions)
+![GitHub release](https://img.shields.io/github/v/release/ashutosh-getgarak/garak-security-scanner)
+[![CI](https://github.com/ashutosh-getgarak/garak-security-scanner/workflows/CI/badge.svg)](https://github.com/ashutosh-getgarak/garak-security-scanner/actions)
 
-A GitHub Action that runs comprehensive AI security scans in your CI/CD pipeline using [Garak](https://garak.ai) - the leading LLM vulnerability scanner.
+A GitHub Action that runs comprehensive AI security scans in your CI/CD pipeline using [Garak](https://www.getgarak.com/) - the leading LLM vulnerability scanner.
 
 Automatically detect:
 - 🛡️ Prompt injection attacks
@@ -20,25 +19,16 @@ Automatically detect:
 
 ## Quick Start
 
-### Option 1: Use GitHub's Workflow Template (Easiest)
+### 1. Set up secrets
 
-1. **Set up secrets** in your repository:
-   - Go to **Settings → Secrets and variables → Actions → New repository secret**
-   - Add `GARAK_API_KEY` - Your Garak API key ([get one here](https://app.garak.ai/api-keys))
-   - Add `X_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
+Add these secrets to your GitHub repository:
+- Go to **Settings → Secrets and variables → Actions → New repository secret**
+- Add `GARAK_API_KEY` - Your Garak API key ([sign up at getgarak.com](https://www.getgarak.com/))
+- Add `X_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
 
-2. **Add the workflow**:
-   - Go to your repository's **Actions** tab
-   - Click **New workflow**
-   - Search for **"Garak"** or find it in the Security category
-   - Click **Configure** on the "Garak AI Security Scanner" template
-   - Commit the workflow file
+### 2. Create workflow file
 
-That's it! The scan will run automatically on your next push.
-
-### Option 2: Manual Setup
-
-If the template isn't available yet (pending GitHub approval), create `.github/workflows/security-scan.yml` manually:
+Create `.github/workflows/garak-security-scan.yml`:
 
 ```yaml
 name: AI Security Scan
@@ -60,7 +50,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Garak Security Scan
-        uses: garaksecurity/garak-security-scanner@v1
+        uses: ashutosh-getgarak/garak-security-scanner@v1
         with:
           api_key: ${{ secrets.GARAK_API_KEY }}
           endpoint: https://api.anthropic.com/v1/messages
@@ -77,7 +67,7 @@ jobs:
           retention-days: 30
 ```
 
-### What happens next?
+### 3. Run and monitor
 
 The action will automatically:
 1. ✅ Execute comprehensive security scans on every push/PR
@@ -86,15 +76,6 @@ The action will automatically:
 4. 📦 Upload results as artifacts
 5. 💬 Comment on PRs with scan results
 
-## Getting the Workflow Template in GitHub
-
-To make this workflow appear in the "Actions → New workflow" suggestions for all users:
-
-1. See [STARTER_WORKFLOWS_SUBMISSION.md](STARTER_WORKFLOWS_SUBMISSION.md) for detailed instructions
-2. Submit a PR to https://github.com/github/starter-workflows (we've prepared all files!)
-3. Once approved, it appears automatically for all GitHub users
-
-**For your organization only:** Create a `.github` repository in your org and add the workflow templates there for immediate availability.
 
 ## Inputs
 
@@ -139,7 +120,7 @@ To make this workflow appear in the "Actions → New workflow" suggestions for a
 ### Custom probe selection
 
 ```yaml
-- uses: garaksecurity/garak-security-scanner@v1
+- uses: ashutosh-getgarak/garak-security-scanner@v1
   with:
     api_key: ${{ secrets.GARAK_API_KEY }}
     endpoint: https://api.openai.com/v1/chat/completions
@@ -156,7 +137,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: garaksecurity/garak-security-scanner@v1
+      - uses: ashutosh-getgarak/garak-security-scanner@v1
         with:
           api_key: ${{ secrets.GARAK_API_KEY }}
           endpoint: https://api.anthropic.com/v1/messages
@@ -166,7 +147,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: garaksecurity/garak-security-scanner@v1
+      - uses: ashutosh-getgarak/garak-security-scanner@v1
         with:
           api_key: ${{ secrets.GARAK_API_KEY }}
           endpoint: https://api.openai.com/v1/chat/completions
@@ -203,11 +184,20 @@ jobs:
 
 ## Supported Endpoints
 
-- Anthropic Claude API
-- OpenAI API
-- Azure OpenAI
-- Custom REST endpoints
-- Any LLM API supporting standard formats
+Garak supports security scanning for all major LLM providers:
+
+- **OpenAI** - GPT-4, GPT-3.5, and all OpenAI models
+- **Anthropic Claude** - Claude 3.5 Sonnet, Claude 3 Opus, and all Claude models
+- **AWS Bedrock** - Amazon's managed AI service with multiple model providers
+- **Cohere** - Command, Generate, and Embed models
+- **Google Gemini** - Gemini Pro, Gemini Ultra, and PaLM models
+- **Hugging Face** - Models hosted on Hugging Face Hub
+- **LiteLLM** - Universal LLM gateway supporting 100+ providers
+- **Llama.cpp** - Local LLaMA model deployments
+- **Mistral AI** - Mistral 7B, Mixtral, and all Mistral models
+- **Ollama** - Local model runtime and management
+- **Replicate** - Cloud-hosted model API
+- **Custom REST APIs** - Any LLM endpoint with standard request/response formats
 
 ## Troubleshooting
 
@@ -250,14 +240,11 @@ Contributions welcome! Please:
 
 ## Support
 
-- 📧 Email: support@garak.ai
-- 💬 Discord: [Join our community](https://discord.gg/garak)
-- 📚 Documentation: [docs.garak.ai](https://docs.garak.ai)
-- 🐛 Issues: [GitHub Issues](https://github.com/garaksecurity/garak-security-scanner/issues)
+For support, visit [www.getgarak.com](https://www.getgarak.com/) or open an issue in this repository.
 
 ## License
 
-Apache License 2.0 - see [LICENSE](LICENSE) for details.
+Proprietary - © Garak Inc. All rights reserved.
 
 ## Future Enhancements
 
