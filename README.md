@@ -5,6 +5,8 @@
 
 A GitHub Action that runs comprehensive AI security scans in your CI/CD pipeline using [Garak](https://www.getgarak.com/) - the leading LLM vulnerability scanner.
 
+**🚀 For quick and hassle-free deployment, use our [automated setup](https://scans.garaksecurity.com/cicd/github)**
+
 Automatically detect:
 - 🛡️ Prompt injection attacks
 - 🔒 Security vulnerabilities
@@ -23,7 +25,7 @@ Automatically detect:
 
 Add these secrets to your GitHub repository:
 - Go to **Settings → Secrets and variables → Actions → New repository secret**
-- Add `GARAK_API_KEY` - Your Garak API key ([sign up at getgarak.com](https://www.getgarak.com/))
+- Add `GARAK_API_KEY` - Your Garak API key (sign up at: https://scans.garaksecurity.com/)
 - Add `X_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
 
 ### 2. Create workflow file
@@ -233,7 +235,7 @@ response_json_path: $.choices[0].message.content
 
 ## Support
 
-For support, visit [www.getgarak.com](https://www.getgarak.com/) or open an issue in this repository.
+For support, contact security@getgarak.com
 
 ## License
 
