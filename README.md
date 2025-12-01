@@ -25,7 +25,7 @@ Automatically detect:
 
 Add these secrets to your GitHub repository:
 - Go to **Settings → Secrets and variables → Actions → New repository secret**
-- Add `GARAK_API_KEY` - Your Garak API key (sign up at: https://scans.garaksecurity.com/)
+- Add `GARAK_API_KEY` - Your Garak API key (sign up at: https://scans.garaksecurity.com/settings/api-keys)
 - Add `X_API_KEY` - API key for the endpoint you're testing (e.g., Anthropic, OpenAI)
 
 ### 2. Create workflow file
